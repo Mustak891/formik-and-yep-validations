@@ -1,25 +1,40 @@
-import logo from './logo.svg';
 import './App.css';
+import ResponsiveAppBar from './components/appbar';
+import BasicTable from './components/table';
+import { Routes, Route } from 'react-router-dom';
+import Form from './components/add data';
+import Updatedata from './components/updatedata';
+
 
 function App() {
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Routes>
+        <Route path='/' element={<Home />} />
+        <Route path='/adddata' element={[<ResponsiveAppBar />, <Form />]} />
+        <Route path='/updatedata' element={[<ResponsiveAppBar />, <Updatedata />]} />
+      </Routes>
     </div>
   );
 }
+
+function Home(){
+  return(
+    <div>
+    <ResponsiveAppBar />
+      <div>
+        <span><h1 className='topheading'>REACT + FORMIK LIBRARY MANGEMENT</h1></span>
+      </div>
+      <BasicTable />
+      <createData />
+    </div>
+  )
+}
+
+
+
+
+
 
 export default App;
